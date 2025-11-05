@@ -1,0 +1,2 @@
+method	actual_sparsity	ppl_test
+sparsegpt	0.5000	7.8886

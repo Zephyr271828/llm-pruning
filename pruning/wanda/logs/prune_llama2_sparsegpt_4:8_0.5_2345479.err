@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/n/fs/vision-mix/yx1168/pruning/fms-wanda/wanda/main.py", line 120, in <module>
+    main()
+  File "/n/fs/vision-mix/yx1168/pruning/fms-wanda/wanda/main.py", line 67, in main
+    model = get_llm(args.model, args.cache_dir)
+  File "/n/fs/vision-mix/yx1168/pruning/fms-wanda/wanda/main.py", line 22, in get_llm
+    model = AutoModelForCausalLM.from_pretrained(
+  File "/n/fs/vision-mix/yx1168/pruning/fms-wanda/wanda/transformers/src/transformers/models/auto/auto_factory.py", line 471, in from_pretrained
+    return model_class.from_pretrained(
+  File "/n/fs/vision-mix/yx1168/pruning/fms-wanda/wanda/transformers/src/transformers/modeling_utils.py", line 2630, in from_pretrained
+    model = cls(config, *model_args, **model_kwargs)
+TypeError: __init__() got an unexpected keyword argument 'no_split_module_classes'

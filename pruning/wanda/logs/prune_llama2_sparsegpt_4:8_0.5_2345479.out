@@ -1,0 +1,6 @@
+torch 2.8.0
+transformers 4.28.0
+accelerate 1.10.1
+# of gpus:  2
+loading llm model /n/fs/vision-mix/yx1168/model_ckpts/Llama-2-7b-hf
+<class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>

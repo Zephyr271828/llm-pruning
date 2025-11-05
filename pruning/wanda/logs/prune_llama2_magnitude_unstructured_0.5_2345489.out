@@ -1,0 +1,49 @@
+torch 2.8.0
+transformers 4.28.0
+accelerate 1.10.1
+# of gpus:  2
+loading llm model /n/fs/vision-mix/yx1168/model_ckpts/Llama-2-7b-hf
+<class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+model.seqlen: 4096
+use device  cuda:0
+pruning starts
+******************************
+layer 0 sparsity 0.500654
+layer 1 sparsity 0.500707
+layer 2 sparsity 0.500744
+layer 3 sparsity 0.501227
+layer 4 sparsity 0.501123
+layer 5 sparsity 0.501560
+layer 6 sparsity 0.500812
+layer 7 sparsity 0.501593
+layer 8 sparsity 0.500865
+layer 9 sparsity 0.501034
+layer 10 sparsity 0.500843
+layer 11 sparsity 0.501353
+layer 12 sparsity 0.501236
+layer 13 sparsity 0.501154
+layer 14 sparsity 0.501012
+layer 15 sparsity 0.501432
+layer 16 sparsity 0.501073
+layer 17 sparsity 0.500963
+layer 18 sparsity 0.501161
+layer 19 sparsity 0.500545
+layer 20 sparsity 0.500673
+layer 21 sparsity 0.501270
+layer 22 sparsity 0.500906
+layer 23 sparsity 0.500999
+layer 24 sparsity 0.500991
+layer 25 sparsity 0.501228
+layer 26 sparsity 0.500776
+layer 27 sparsity 0.500648
+layer 28 sparsity 0.501165
+layer 29 sparsity 0.501206
+layer 30 sparsity 0.501136
+layer 31 sparsity 0.500962
+sparsity sanity check 0.5010
+******************************
+evaluating on wikitext2
+nsamples 83
+sample 0
+sample 50
+wikitext perplexity 14.901033401489258

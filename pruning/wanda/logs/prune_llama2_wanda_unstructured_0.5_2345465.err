@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/n/fs/vision-mix/yx1168/pruning/fms-wanda/wanda/main.py", line 9, in <module>
+    from lib.eval import eval_ppl, eval_zero_shot
+  File "/n/fs/vision-mix/yx1168/pruning/fms-wanda/wanda/lib/eval.py", line 155
+    for task_name in task_names
+                               ^
+SyntaxError: invalid syntax
