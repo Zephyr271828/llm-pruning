@@ -1,7 +1,10 @@
 __pycache__
 **/__pycache__
-*.egg-info
+
 *.bin
+*.egg-info
+*.err
+*.out
 *.safetensors
 
 pruning/FLAP/llm_weights/
