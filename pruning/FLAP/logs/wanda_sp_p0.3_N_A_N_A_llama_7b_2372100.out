@@ -1,0 +1,168 @@
+torch 1.10.1
+transformers 4.28.0
+accelerate 0.18.0
+# of gpus:  1
+loading llm model /n/fs/vision-mix/yx1168/model_ckpts/llama-7b-hf
+<class 'models.hf_llama.modeling_llama.LlamaForCausalLM'>
+use device  cuda:0
+pruning starts
+loading calibdation data
+dataset loading complete
+pruning layer 0 name self_attn.o_proj
+pruning layer 0 name mlp.down_proj
+pruning layer 1 name self_attn.o_proj
+pruning layer 1 name mlp.down_proj
+pruning layer 2 name self_attn.o_proj
+pruning layer 2 name mlp.down_proj
+pruning layer 3 name self_attn.o_proj
+pruning layer 3 name mlp.down_proj
+pruning layer 4 name self_attn.o_proj
+pruning layer 4 name mlp.down_proj
+pruning layer 5 name self_attn.o_proj
+pruning layer 5 name mlp.down_proj
+pruning layer 6 name self_attn.o_proj
+pruning layer 6 name mlp.down_proj
+pruning layer 7 name self_attn.o_proj
+pruning layer 7 name mlp.down_proj
+pruning layer 8 name self_attn.o_proj
+pruning layer 8 name mlp.down_proj
+pruning layer 9 name self_attn.o_proj
+pruning layer 9 name mlp.down_proj
+pruning layer 10 name self_attn.o_proj
+pruning layer 10 name mlp.down_proj
+pruning layer 11 name self_attn.o_proj
+pruning layer 11 name mlp.down_proj
+pruning layer 12 name self_attn.o_proj
+pruning layer 12 name mlp.down_proj
+pruning layer 13 name self_attn.o_proj
+pruning layer 13 name mlp.down_proj
+pruning layer 14 name self_attn.o_proj
+pruning layer 14 name mlp.down_proj
+pruning layer 15 name self_attn.o_proj
+pruning layer 15 name mlp.down_proj
+pruning layer 16 name self_attn.o_proj
+pruning layer 16 name mlp.down_proj
+pruning layer 17 name self_attn.o_proj
+pruning layer 17 name mlp.down_proj
+pruning layer 18 name self_attn.o_proj
+pruning layer 18 name mlp.down_proj
+pruning layer 19 name self_attn.o_proj
+pruning layer 19 name mlp.down_proj
+pruning layer 20 name self_attn.o_proj
+pruning layer 20 name mlp.down_proj
+pruning layer 21 name self_attn.o_proj
+pruning layer 21 name mlp.down_proj
+pruning layer 22 name self_attn.o_proj
+pruning layer 22 name mlp.down_proj
+pruning layer 23 name self_attn.o_proj
+pruning layer 23 name mlp.down_proj
+pruning layer 24 name self_attn.o_proj
+pruning layer 24 name mlp.down_proj
+pruning layer 25 name self_attn.o_proj
+pruning layer 25 name mlp.down_proj
+pruning layer 26 name self_attn.o_proj
+pruning layer 26 name mlp.down_proj
+pruning layer 27 name self_attn.o_proj
+pruning layer 27 name mlp.down_proj
+pruning layer 28 name self_attn.o_proj
+pruning layer 28 name mlp.down_proj
+pruning layer 29 name self_attn.o_proj
+pruning layer 29 name mlp.down_proj
+pruning layer 30 name self_attn.o_proj
+pruning layer 30 name mlp.down_proj
+pruning layer 31 name self_attn.o_proj
+pruning layer 31 name mlp.down_proj
+******************************
+layer 0 sparsity 1.000040
+layer 1 sparsity 1.000040
+layer 2 sparsity 1.000040
+layer 3 sparsity 1.000040
+layer 4 sparsity 1.000040
+layer 5 sparsity 1.000040
+layer 6 sparsity 1.000040
+layer 7 sparsity 1.000040
+layer 8 sparsity 1.000040
+layer 9 sparsity 1.000040
+layer 10 sparsity 1.000040
+layer 11 sparsity 1.000040
+layer 12 sparsity 1.000040
+layer 13 sparsity 1.000040
+layer 14 sparsity 1.000040
+layer 15 sparsity 1.000040
+layer 16 sparsity 1.000040
+layer 17 sparsity 1.000040
+layer 18 sparsity 1.000040
+layer 19 sparsity 1.000040
+layer 20 sparsity 1.000040
+layer 21 sparsity 1.000040
+layer 22 sparsity 1.000040
+layer 23 sparsity 1.000040
+layer 24 sparsity 1.000040
+layer 25 sparsity 1.000040
+layer 26 sparsity 1.000040
+layer 27 sparsity 1.000040
+layer 28 sparsity 1.000040
+layer 29 sparsity 1.000040
+layer 30 sparsity 1.000040
+layer 31 sparsity 1.000040
+sparsity sanity check 1.0000
+model parameter 6.74B
+******************************
+evaluating on wikitext2
+nsamples 2667
+sample 0
+sample 50
+sample 100
+sample 150
+sample 200
+sample 250
+sample 300
+sample 350
+sample 400
+sample 450
+sample 500
+sample 550
+sample 600
+sample 650
+sample 700
+sample 750
+sample 800
+sample 850
+sample 900
+sample 950
+sample 1000
+sample 1050
+sample 1100
+sample 1150
+sample 1200
+sample 1250
+sample 1300
+sample 1350
+sample 1400
+sample 1450
+sample 1500
+sample 1550
+sample 1600
+sample 1650
+sample 1700
+sample 1750
+sample 1800
+sample 1850
+sample 1900
+sample 1950
+sample 2000
+sample 2050
+sample 2100
+sample 2150
+sample 2200
+sample 2250
+sample 2300
+sample 2350
+sample 2400
+sample 2450
+sample 2500
+sample 2550
+sample 2600
+sample 2650
+ppl on wikitext 42.04121017456055
+model and tokenizer loaded from llm_weights/wanda_sp_p0.3_N/A_N/A_llama_7b
