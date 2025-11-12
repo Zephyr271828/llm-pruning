@@ -12,3 +12,4 @@ checkpoints/
 **/logs/
 **/**/logs/
 **/**/outputs/
+**/**/tmp/ 

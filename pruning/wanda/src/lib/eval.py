@@ -2,9 +2,6 @@
 import time
 import torch
 import torch.nn as nn
-import sys; sys.path.insert(0, '/work/nvme/bdhh/yxu21/pruning/lm-evaluation-harness')
-# Import get_loaders function from data module within the same directory
-sys.path.append('/n/fs/vision-mix/yx1168/pruning/fms-wanda/wanda/lib')
 from data import get_loaders 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from collections import defaultdict
@@ -139,7 +136,7 @@ def eval_zero_shot(model_name, model, tokenizer, task_list=["boolq","rte","hella
         num_fewshot=0, use_accelerate=False, add_special_tokens=False):
     import lm_eval
     from lm_eval import tasks, evaluator 
-    # import pdb; pdb.set_trace()
+
     def pattern_match(patterns, source_list):
         task_names = set()
         for pattern in patterns:

@@ -9,7 +9,7 @@
 
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=128GB
-#SBATCH --time=4:00:00
+#SBATCH --time=12:00:00
 #SBATCH --gres=gpu:1
 
 #SBATCH --mail-type=all
@@ -22,28 +22,37 @@ set -euo pipefail
 source /usr/local/anaconda3/2024.02/etc/profile.d/conda.sh
 conda activate minitron
 
-PROJ_DIR=minitron
+PROJ_DIR=$(pwd)
 
 # model_path=meta-llama/Llama-2-7b-hf
 model_path=/n/fs/vision-mix/yx1168/model_ckpts/Llama-2-7b-hf
-save_dir=${PROJ_DIR}/../../checkpoints/minitron
-log_dir=${PROJ_DIR}/logs
+save_dir=${PROJ_DIR}/../../checkpoints
+log_dir=${PROJ_DIR}/outputs
 calib_size=1024
 
-python $PROJ_DIR/main.py bi \
-    --model_path ${model_path} \
-    --save_dir ${save_dir} \
-    --log_dir ${log_dir} \
-    --prune_task pg19 \
-    --num_layers 23 \
-    --calib_size ${calib_size} \
-    --seq_len 4096
+# python $PROJ_DIR/main.py bi \
+#     --model_path ${model_path} \
+#     --save_dir ${save_dir}/shortgpt \
+#     --log_dir ${log_dir} \
+#     --prune_task pg19 \
+#     --num_layers 23 \
+#     --calib_size ${calib_size} \
+#     --seq_len 4096
+
+# python $PROJ_DIR/main.py depth \
+#     --model_path ${model_path} \
+#     --save_dir ${save_dir} \
+#     --log_dir ${log_dir} \
+#     --prune_task pg19 \
+#     --num_layers 23 \
+#     --calib_size ${calib_size} \
+#     --seq_len 4096
 
 python $PROJ_DIR/main.py depth \
     --model_path ${model_path} \
-    --save_dir ${save_dir} \
+    --save_dir ${save_dir}/minitron \
     --log_dir ${log_dir} \
     --prune_task pg19 \
-    --num_layers 23 \
+    --num_layers 31 \
     --calib_size ${calib_size} \
     --seq_len 4096

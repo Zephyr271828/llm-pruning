@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 def depth_prune_BI(model, tokenizer, scorer, args):
-    BI_scores = [0 for _ in model.model.layers]
+    BI_scores = [[] for _ in model.model.layers]
     hooks = []
     
     def get_BI_hook(layer_idx):
@@ -12,7 +12,7 @@ def depth_prune_BI(model, tokenizer, scorer, args):
             output = outputs[0]
             with torch.no_grad():
                 BI = 1 - F.cosine_similarity(hidden_states, output, dim=2).mean()
-                BI_scores[layer_idx] += BI
+                BI_scores[layer_idx].append(BI.item())
         return calculate_BI_hook
     
     for i, layer in enumerate(model.model.layers):
@@ -24,15 +24,13 @@ def depth_prune_BI(model, tokenizer, scorer, args):
             
     for hook in hooks:
         hook.remove()
+        
+    BI_scores = [sum(s)/len(s) if len(s) > 0 else 0 for s in BI_scores]
 
     sorted_idx = sorted(range(len(BI_scores)), key=lambda i: BI_scores[i], reverse=True)
     
     layer_idx_to_keep = sorted(sorted_idx[:args.num_layers])
     layer_idx_to_drop = sorted(sorted_idx[args.num_layers:])
-    
-    # NOTE test
-    # layer_idx_to_drop = list(range(15, 31))
-    # layer_idx_to_keep = [i for i in range(32) if i not in layer_idx_to_drop]
     
     layers_to_drop = [
         layer for i, layer in enumerate(model.model.layers) if i in layer_idx_to_drop
@@ -47,8 +45,6 @@ def depth_prune_BI(model, tokenizer, scorer, args):
     
     for layer in layers_to_drop:
         del layer
-        
-    BI_scores = [s.item() for s in BI_scores]
         
     return BI_scores, layer_idx_to_drop
         

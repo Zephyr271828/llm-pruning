@@ -16,24 +16,6 @@
 - [ ] [FLAP](FLAP/README.md)
 - [ ] [SLEB]
 
-## Minitron
-Installation:
-```bash
-bash minitron/scripts/install.sh
-```
-
-Prune Llama3.1-8B
-```bash
-bash minitron/scripts/prune_depth_llama3.1-8b.sh
-bash minitron/scripts/prune_width_llama3.1-8b.sh
-```
-
-## Short GPT
-Installation:
-```bash
-bash shortgpt/install.sh
-```
-
 ## Shortened Llama
 Installation:
 ```bash
