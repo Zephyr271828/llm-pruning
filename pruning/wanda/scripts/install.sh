@@ -3,8 +3,8 @@
 conda create -n wanda python=3.9 -y
 conda activate wanda
 
-conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3 -c pytorch -c conda-forge
-pip install "numpy<2" "pyarrow<14.0.0" transformers==4.43.3 datasets==2.11.0 wandb sentencepiece accelerate==0.31.0
+pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0
+pip install transformers==4.43.3 datasets==2.16.0 wandb sentencepiece accelerate==0.31.0
 
 # conda create -n wanda-eval python=3.9 -y
 # conda activate wanda-eval

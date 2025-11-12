@@ -6,9 +6,9 @@
 **Road Map**
 - [x] [Minitron](minitron/README.md#minitron-depth)
 - [x] [ShortGPT](minitron/README.md#shortgpt)
-- [ ] [Wanda](wanda/README.md)
-- [ ] [SparseGPT](wanda/README.md)
-- [ ] [Magnitude](wanda/README.md)
+- [x] [Wanda](wanda/README.md)
+- [x] [SparseGPT](wanda/README.md)
+- [x] [Magnitude](wanda/README.md)
 - [ ] [Sheared Llama](llmshearing/README.md)
 - [ ] [LLM Pruner](LLM-Pruner/README.md)
 - [ ] [Shortened Llama](shortened-llm/README.md)
