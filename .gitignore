@@ -14,4 +14,4 @@ checkpoints/
 **/**/outputs/
 **/**/tmp/ 
 
-pruning/llmshearing/data/redpajama/for_prune/*
+pruning/llmshearing/llmshearing/data/redpajama/for_prune/*
