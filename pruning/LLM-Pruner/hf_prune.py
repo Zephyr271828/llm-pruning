@@ -32,7 +32,7 @@ def main(args):
     logger = LoggerWithDepth(
         env_name="{}".format(args.save_ckpt_log_name), 
         config=args.__dict__,
-        root_dir='prune_log',
+        root_dir=args.log_dir,
         setup_sublogger=True
     )
 
@@ -194,7 +194,7 @@ def main(args):
         for i in range(args.iterative_steps):
 
             if pruner_type in ['taylor']:
-                example_prompts = get_examples('bookcorpus', tokenizer, 10, seq_len = 64)
+                example_prompts = get_examples('bookcorpus', tokenizer, 10, seq_len = 64)。to(args.device)
                 logger.log("Start Backwarding in iterative steps = {}...".format(i))
                 loss = model(example_prompts, labels=example_prompts).loss
                 logger.log("Loss = {}".format(loss))
@@ -274,6 +274,7 @@ if __name__ == "__main__":
 
     # argument for parsing
     parser.add_argument('--base_model', type=str, default="decapoda-research/llama-7b-hf", help='base model name')
+    parser.add_argument('--log_dir', type=str, default="prune_log", help='the path for save the checkpoint and the log. The final path would be log/{your_name_here}_{pruner_type}_{pruning_ratio}')
     parser.add_argument('--save_ckpt_log_name', type=str, default="llama_prune", help='the path for save the checkpoint and the log. The final path would be log/{your_name_here}_{pruner_type}_{pruning_ratio}')
     parser.add_argument('--pruning_ratio', type=float, default=0.5, help='pruning ratio')
     parser.add_argument('--pruner_type', type=str, default='l2', help='pruner type')

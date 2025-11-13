@@ -1,8 +1,23 @@
 #!/bin/bash
 
+#SBATCH --job-name=prune_llama3.1-8b_%j
+#SBATCH --output=logs/prune_llama3.1-8b_%j.out
+#SBATCH --error=logs/prune_llama3.1-8b_%j.err
+
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=128GB
+#SBATCH --time=12:00:00
+#SBATCH --gres=gpu:1
+
+#SBATCH --mail-type=all
+#SBATCH --mail-user=yx1168@princeton.edu
+
 set -euo pipefail
 
-source /usr/local/anaconda3/2024.02/etc/profile.d/conda.sh
+source $(conda info --base)/etc/profile.d/conda.sh
 conda activate wanda
 
 methods=(
@@ -19,6 +34,7 @@ sparsities=(
 
 PROJ_DIR=$(pwd)
 export PYTHONPATH=${PROJ_DIR}/src/lib:${PYTHONPATH:-''}
+export PYTHONPATH=${PROJ_DIR}/lm-evaluation-harness:${PYTHONPATH}
 # model_path=meta-llama/Llama-3.1-8B
 model_path=/n/fs/vision-mix/yx1168/model_ckpts/Llama-3.1-8B
 model_name=$(basename ${model_path})

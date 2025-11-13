@@ -15,11 +15,9 @@
 #SBATCH --mail-type=all
 #SBATCH --mail-user=yx1168@princeton.edu
 
-#SBATCH --chdir=.
-
 set -euo pipefail
 
-source /usr/local/anaconda3/2024.02/etc/profile.d/conda.sh
+source $(conda info --base)/etc/profile.d/conda.sh
 conda activate minitron
 
 PROJ_DIR=$(pwd)

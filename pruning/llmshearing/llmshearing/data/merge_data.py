@@ -1,4 +1,4 @@
-import sys
+
 import argparse
 import contextlib
 import json
@@ -14,7 +14,7 @@ from transformers import LlamaTokenizerFast
 from llmshearing.datasets.streaming_dataset import TextStreamingDataset
 
 
-def load_data(data_local, data_split):
+def load_data(data_local, data_split, tokenizer_name):
     """ load data from a split """
     return TextStreamingDataset(data_local, max_seq_len=2048, split=data_split)
 
@@ -28,7 +28,7 @@ def merge_splits_with_no_bias():
     parser.add_argument("--split_names", nargs='+', default=[])
     parser.add_argument("--split_rows", nargs='+', default=[])
     parser.add_argument("--shuffle", action="store_true")
-    args = parser.parse_args()
+    args = parser.parse_args(sys.argv[2:])
     
     if args.input_dir is None:
         args.input_dir = [Path(os.path.dirname(args.split_names[i])) for i in range(len(args.split_names))]

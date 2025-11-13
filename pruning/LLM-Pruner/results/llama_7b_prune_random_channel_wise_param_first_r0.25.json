@@ -1,0 +1,62 @@
+{
+  "results": {
+    "boolq": {
+      "acc": 0.4776758409785933,
+      "acc_stderr": 0.00873633411558504
+    },
+    "hellaswag": {
+      "acc": 0.26399123680541725,
+      "acc_stderr": 0.00439893722503841,
+      "acc_norm": 0.26598287193786097,
+      "acc_norm_stderr": 0.004409521343140119
+    },
+    "arc_challenge": {
+      "acc": 0.19112627986348124,
+      "acc_stderr": 0.011490055292778599,
+      "acc_norm": 0.23122866894197952,
+      "acc_norm_stderr": 0.012320858834772287
+    },
+    "winogrande": {
+      "acc": 0.5217048145224941,
+      "acc_stderr": 0.014039239216484627
+    },
+    "openbookqa": {
+      "acc": 0.108,
+      "acc_stderr": 0.013894535480989179,
+      "acc_norm": 0.29,
+      "acc_norm_stderr": 0.02031317923174518
+    },
+    "piqa": {
+      "acc": 0.5707290533188248,
+      "acc_stderr": 0.011548515471258012,
+      "acc_norm": 0.55930359085963,
+      "acc_norm_stderr": 0.011583478090657129
+    },
+    "arc_easy": {
+      "acc": 0.30387205387205385,
+      "acc_stderr": 0.009437524848293738,
+      "acc_norm": 0.29924242424242425,
+      "acc_norm_stderr": 0.009396447162309822
+    }
+  },
+  "versions": {
+    "boolq": 1,
+    "hellaswag": 0,
+    "arc_challenge": 0,
+    "winogrande": 0,
+    "openbookqa": 0,
+    "piqa": 0,
+    "arc_easy": 0
+  },
+  "config": {
+    "model": "hf-causal-experimental",
+    "model_args": "checkpoint=/n/fs/vision-mix/yx1168/pruning/fms-llm-pruner/LLM-Pruner/prune_log/llama_7b_prune_random_channel_wise_param_first_r0.25/pytorch_model.bin,config_pretrained=/n/fs/vision-mix/yx1168/model_ckpts/llama-7b-hf",
+    "num_fewshot": 0,
+    "batch_size": null,
+    "device": "cuda:0",
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {}
+  }
+}

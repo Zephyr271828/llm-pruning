@@ -1,5 +1,5 @@
 from transformers import AutoTokenizer
-# from llama_tokenizer import Tokenizer
+from llama_tokenizer import Tokenizer
 from tqdm import tqdm
 import sys
 import os
@@ -29,8 +29,7 @@ if not os.path.exists(target_folder):
     os.makedirs(target_folder)
 
 print("Load tokenizer...")
-# tok = Tokenizer("tokenizer.model") # this is faster than the huggingface tokenizer
-tok = AutoTokenizer.from_pretrained('/scratch/yx3038/model_ckpt/Llama-2-7b-hf/')
+tok = Tokenizer("tokenizer.model") # this is faster than the huggingface tokenizer
 print("Done")
 
 print("Loading file...")
@@ -41,7 +40,7 @@ buffer = []
 data = []
 for line in tqdm(lines):
     item = json.loads(line)
-    tokens = buffer + tok.encode(item["text"])
+    tokens = buffer + tok.encode(item["text"], bos=True, eos=True)
     buffer = []
     for start_id in range(0, len(tokens), args.seq_length):
         if start_id + args.seq_length < len(tokens):

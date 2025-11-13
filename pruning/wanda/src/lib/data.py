@@ -18,6 +18,16 @@ class TokenizerWrapper:
 
 # Load and process wikitext2 dataset
 def get_wikitext2(nsamples, seed, seqlen, tokenizer):
+    # Load train and test datasets
+    # dataset = load_dataset(
+    #     'wikitext',
+    #     'wikitext-2-raw-v1',
+    #     split=None,  # this loads all available splits
+    #     verification_mode='no_checks',
+    #     # cache_dir='/work/nvme/bdhh/yxu21/hf_cache'
+    # )
+    # traindata = dataset['train']
+    # testdata = dataset['test']
     
     traindata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='train')
     testdata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='test')
@@ -40,12 +50,15 @@ def get_wikitext2(nsamples, seed, seqlen, tokenizer):
 
 # Load and process c4 dataset
 def get_c4(nsamples, seed, seqlen, tokenizer):
-    # Load train and validation datasets
-    # traindata = load_dataset('allenai/c4', 'allenai--c4', data_files={'train': 'en/c4-train.00000-of-01024.json.gz'})
-    # valdata = load_dataset('allenai/c4', 'allenai--c4', data_files={'validation': 'en/c4-validation.00000-of-00008.json.gz'})
-
-    traindata = load_dataset('allenai/c4', 'en', data_files='en/c4-train.00000-of-01024.json.gz')
-    valdata = load_dataset('allenai/c4', 'en', data_files='en/c4-validation.00000-of-00008.json.gz')
+    # Load train and validation datasets    
+    data = load_dataset(
+        'allenai/c4', 
+        'en',
+        data_files={'train': 'en/c4-train.00000-of-01024.json.gz', 'validation': 'en/c4-validation.00000-of-00008.json.gz'}, 
+        verification_mode="no_checks"
+    )
+    traindata = data['train']
+    valdata = data['validation']
 
     # Generate samples from training set
     random.seed(seed)
