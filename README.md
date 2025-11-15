@@ -22,6 +22,6 @@ For an overview of the pruning methods, see [here](pruning/README.md); for usage
 
 ## Roadmap
 - [ ] complete pruning code cleaning. [details](pruning/README.md#roadmap)
-- [ ] complete training code cleaning. [details](training/README.md#roadmap)
+- [x] complete training code cleaning. [details](training/README.md#roadmap)
 - [ ] accelerate lm-eval-harness for maxtext.
 - [ ] simplify the design of jobman
