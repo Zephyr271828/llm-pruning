@@ -40,9 +40,9 @@ You may also want to refer to the [data preparation doc](getting_started/Data_In
 bash scripts/training.sh \
     --model=llama3.1-8b \
     --num_steps=50000 \
-    --lr=3e-4 \ 
+    --lr=3e-4 \
     --global_batch_size=512 \
-    --data_files=/home/zephyr/gcs-bucket/datasets/dclm/llama3_64_array_record/*.array_record \
+    --data_files=/home/zephyr/gcs-bucket/datasets/dclm/llama3_64_array_record/*.array_record 
 ```
 
 ## Fine-tuning
@@ -50,7 +50,7 @@ bash scripts/training.sh \
 bash scripts/finetuning.sh \
     --model=llama3.1-8b \
     --num_steps=50000 \
-    --lr=3e-4 \ 
+    --lr=3e-4 \
     --global_batch_size=512 \
     --data_files=/home/zephyr/gcs-bucket/datasets/dclm/llama3_64_array_record/*.array_record \
     --load_parameters_path=gs://${BUCKET_NAME}/model_ckpts/maxtext/llama3.1_8b
