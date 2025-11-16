@@ -25,22 +25,22 @@ export PYTHONPATH=$PROJ_DIR/lm-evaluation-harness:$PYTHONPATH
 ckpt_dir=$PROJ_DIR/../../checkpoints/llm-pruner
 log_dir=$PROJ_DIR/outputs
 
-python eval_ppl.py \
-    --model_path=/n/fs/vision-mix/yx1168/model_ckpts/llama-7b
+# python eval_ppl.py \
+#     --model_path=/n/fs/vision-mix/yx1168/model_ckpts/llama-7b
 
 mapfile -t bin_dirs < <(find "$ckpt_dir" -name "*.bin" -type f | xargs -I {} dirname {} | sort -u)
 
 for bin_dir in "${bin_dirs[@]}"; do
-#     model_name=$(basename $bin_dir)
+    model_name=$(basename $bin_dir)
     echo "[INFO] evaluating ${model_name}"
-
-    python eval_ppl.py \
-        --model_path="$bin_dir/pytorch_model.bin" 
 
     if [[ -f ${log_dir}/${model_name}.json ]]; then
         echo "[INFO] ${model_name} already evaluated, skipping..."
         continue
     fi
+
+    python eval_ppl.py \
+        --model_path="$bin_dir/pytorch_model.bin" 
 
     if [[ $model_name == *llama-7b* ]]; then
         base_model=/n/fs/vision-mix/yx1168/model_ckpts/llama-7b

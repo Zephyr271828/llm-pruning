@@ -21,7 +21,7 @@ where `pruning` is the collection of the pruning methods we experimented; `train
 For an overview of the pruning methods, see [here](pruning/README.md); for usage of the training frameworks, see [here](training/README.md); for usage of JobMan, see [here](jobman/README.md).
 
 ## Roadmap
-- [ ] complete pruning code cleaning. [details](pruning/README.md#roadmap)
+- [x] complete pruning code cleaning. [details](pruning/README.md#roadmap)
 - [x] complete training code cleaning. [details](training/README.md#roadmap)
-- [ ] accelerate lm-eval-harness for maxtext.
+- [x] accelerate lm-eval-harness for maxtext. (by 2-4x times!)
 - [ ] simplify the design of jobman
