@@ -30,27 +30,49 @@ For an overview of the pruning methods, see [here](pruning/README.md); for usage
 **Minitron**
 **Winogrande**
 
-Paper:
-![](pruning/minitron/figs/minitron-winogrande.png)
+<table>
+  <tr>
+    <td style="text-align:center;">
+      <img src="pruning/minitron/figs/minitron-winogrande.png" width="400"><br>
+      Baseline
+    </td>
+    <td style="text-align:center;">
+      <img src="pruning/minitron/figs/minitron-winogrande-ours.png" width="400"><br>
+      Ours
+    </td>
+  </tr>
+</table>
 
-Ours:
-![](pruning/minitron/figs/minitron-winogrande-ours.png)
 
 **Wikitext**
 
-Paper:
-![](pruning/minitron/figs/minitron-wikitext.png)
-
-Ours:
-![](pruning/minitron/figs/minitron-wikitext-ours.png)
+<table>
+  <tr>
+    <td style="text-align:center;">
+      <img src="pruning/minitron/figs/minitron-wikitext.png" width="400"><br>
+      Baseline
+    </td>
+    <td style="text-align:center;">
+      <img src="pruning/minitron/figs/minitron-wikitext-ours.png" width="400"><br>
+      Ours
+    </td>
+  </tr>
+</table>
 
 **ShortGPT**
 
-Paper:
-![](pruning/minitron/figs/shortgpt-fig3.png)
-
-Ours:
-![](pruning/minitron/figs/shortgpt-fig3-ours.png)
+<table>
+  <tr>
+    <td style="text-align:center;">
+      <img src="pruning/minitron/figs/shortgpt-fig3.png" width="400"><br>
+      Baseline
+    </td>
+    <td style="text-align:center;">
+      <img src="pruning/minitron/figs/shortgpt-fig3-ours.png" width="400"><br>
+      Ours
+    </td>
+  </tr>
+</table>
 
 **Wanda**
 
