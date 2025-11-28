@@ -1,4 +1,0 @@
-[submodule "jobman"]
-	path = jobman
-	url = git@github.com:Zephyr271828/jobman.git
-	branch = jobman-exp
