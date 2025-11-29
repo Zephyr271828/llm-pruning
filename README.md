@@ -10,14 +10,12 @@ The repo is organized as follows:
 │   ├── minitron # including shortgpt
 │   ├── shortened-llm # shortened llama
 │   └── wanda # including sparsegpt and magnitude pruning
-└── training
-    ├── fms
-    ├── fms_fsdp
-    └── maxtext
+├── training
+│   ├── fms_fsdp
+│   └── maxtext
+└── eval
 ```
-where `pruning` is the collection of the pruning methods we experimented; `training` contains the LLM training frameworks we used, and we provided options for both TPU and GPU; `jobman` is a TPU orchestration we developed to mimic the slurm system.
-
-For an overview of the pruning methods, see [here](pruning/README.md); for usage of the training frameworks, see [here](training/README.md).
+where `pruning` is the collection of the pruning methods we experimented; `training` contains the LLM training frameworks we used, and we provided options for both TPU and GPU; `eval` contains the evaluation scripts to evaluate HF models.
 
 ## TODOs
 **Pruning**
@@ -43,6 +41,7 @@ For an overview of the pruning methods, see [here](pruning/README.md); for usage
 ## Get Started
 ### Pruning
 In order to reproduce the results of the different pruning methods, we need to set up separate environments for different methods. The installation and command guide can be found at `pruning/<method>/README.md`. Below is an overview:
+
 **Minitron**
 ```bash
 cd pruning/minitron
@@ -99,7 +98,7 @@ To train on GPUs, please refer to the guide of [fms-fsdp](training/fms_fsdp/READ
 To train on TPUs, please refer to guide of [MaxText](training/maxtext/README.md) for details.
 
 ### Evaluation
-**GPU**
+**GPU**  
 For evaluation on GPUS, you may run the following evaluation script on your HF checkpoint:
 ```bash
 cd training/fms_fsdp
@@ -111,6 +110,9 @@ bash scripts/eval.sh
 Note for [LLM-Pruner](pruning/LLM-Pruner) and [Wanda](pruning/wanda), they have specified a specific version of lm-eval to use, which is included in their respective directory, and the evaluation code is included in the pruning process.  
 For all other methods, you may eval with the script provided.
 
+**TPU**
+Please refer to the guide of [MaxText](training/maxtext/README.md) for details.
+
 
 ## Reproduction Results
 In this section, we show some of our results to verify that we can reproduce the results from the original pruning papers.  
@@ -118,7 +120,7 @@ In this section, we show some of our results to verify that we can reproduce the
 - For **ShortGPT**, although evaluation results are provided, yet we noticed there are inconsistencies between results in the table (also see [openreview](https://openreview.net/forum?id=JMNht3SmcG)). Therefore, we choose to reproduce the block importance plot from the paper, which implies the correctness of our implementation.  
 - For all other methods, both official implementation and evaluation results are provided, so we simply provide comparison with the reported results in paper.
 
-**Minitron-Winogrande**
+**Minitron-Winogrande**  
 Left: plot from the paper; Right: plot made by us.
 <table>
   <tr>
