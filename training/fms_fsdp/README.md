@@ -4,7 +4,7 @@ FMS-FSDP is a scalable model training framework developed by IBM. The repo here 
 
 ## Install
 ```bash
-bash fms-fsdp/scripts/install.sh
+bash scripts/install.sh
 ```
 
 ## Data Preparation

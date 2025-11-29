@@ -5,7 +5,7 @@ Pruning Granularity:
 ![](figs/pruning-overview-with-captions.png)
 
 Pruning Methods:
-![](figs/pruning-overview.png)
+![](figs/pruning-taxonomy.png)
 
 **Road Map**
 - [x] [Minitron](minitron/README.md#minitron-depth)
@@ -15,7 +15,7 @@ Pruning Methods:
 - [x] [Magnitude](wanda/README.md)
 - [x] [Sheared Llama](llmshearing/README.md)
 - [x] [LLM Pruner](LLM-Pruner/README.md)
-- [ ] [Shortened Llama](shortened-llm/README.md)
+<!-- - [ ] [Shortened Llama](shortened-llm/README.md)
 - [ ] [Wanda-sp](FLAP/README.md)
 - [ ] [FLAP](FLAP/README.md)
-- [ ] [SLEB]()
+- [ ] [SLEB]() -->

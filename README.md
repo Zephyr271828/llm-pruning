@@ -3,7 +3,6 @@
 The repo is organized as follows:
 
 ```bash
-├── jobman
 ├── pruning
 │   ├── FLAP # including wanda-sp
 │   ├── LLM-Pruner
@@ -18,23 +17,103 @@ The repo is organized as follows:
 ```
 where `pruning` is the collection of the pruning methods we experimented; `training` contains the LLM training frameworks we used, and we provided options for both TPU and GPU; `jobman` is a TPU orchestration we developed to mimic the slurm system.
 
-For an overview of the pruning methods, see [here](pruning/README.md); for usage of the training frameworks, see [here](training/README.md); for usage of JobMan, see [here](jobman/README.md).
+For an overview of the pruning methods, see [here](pruning/README.md); for usage of the training frameworks, see [here](training/README.md).
 
-## Roadmap
-- [x] complete pruning code cleaning. [details](pruning/README.md#roadmap)
-- [x] complete training code cleaning. [details](training/README.md#roadmap)
+## TODOs
+**Pruning**
+- [x] [Minitron](pruning/minitron/README.md#minitron-depth)
+- [x] [ShortGPT](pruning/minitron/README.md#shortgpt)
+- [x] [Wanda](pruning/wanda/README.md)
+- [x] [SparseGPT](pruning/wanda/README.md)
+- [x] [Magnitude](pruning/wanda/README.md)
+- [x] [Sheared Llama](pruning/llmshearing/README.md)
+- [x] [LLM Pruner](pruning/LLM-Pruner/README.md)
+<!-- - [ ] [Shortened Llama](pruning/shortened-llm/README.md)
+- [ ] [Wanda-sp](pruning/FLAP/README.md)
+- [ ] [FLAP](pruning/FLAP/README.md)
+- [ ] [SLEB](pruning/SLEB/README.md) -->
+
+**Training**
+- [x] [FMS-FSDP](training/fms_fsdp/README.md) 
+- [x] [MaxText](training/maxtext/README.md)
+
+**Evaluation**
 - [x] accelerate lm-eval-harness for maxtext. (by 2-4x times!)
-- [ ] simplify the design of jobman
+
+## Get Started
+### Pruning
+In order to reproduce the results of the different pruning methods, we need to set up separate environments for different methods. The installation and command guide can be found at `pruning/<method>/README.md`. Below is an overview:
+**Minitron**
+```bash
+cd pruning/minitron
+bash scripts/install.sh
+bash scripts/prune_llama3.1-8b.sh # contains minitron depth and width for llama3.1-8b
+```
+
+**ShortGPT**
+```bash
+cd pruning/minitron
+bash scripts/install.sh
+bash scripts/prune_llama2-7b.sh 
+```
+
+**Wanda, SparseGPT, Magnitude**
+```bash
+cd pruning/wanda
+bash scripts/install.sh
+bash scripts/prune_llama3.1-8b.sh # contains wanda, sparsegpt, and magnitude for llama3.1-8b
+bash scripts/prune_llama2-7b.sh
+bash scripts/prune_llama-7b.sh
+```
+
+**LLM-Pruner**
+```bash
+cd pruning/LLM-Pruner
+bash scripts/install.sh
+bash scripts/prune_llama-7b.sh
+bash scripts/prune_llama2-7b.sh
+bash scripts/prune_llama3.1-8b.sh
+```
+
+**Sheared Llama**
+```bash
+cd pruning/llmshearing
+bash scripts/install.sh
+
+mkdir -p llmshearing/data/red_pajama && cd llmshearing/data/red_pajama
+huggingface-cli download Zephyr271828/redpajama-for-prune --repo-type dataset --local-dir for_prune
+cd -
+
+bash scripts/hf2composer.sh
+bash scripts/prune_llama2-2.7b.sh
+bash scripts/prune_llama2-1.3b.sh
+bash scripts/prune_llama2-370m.sh
+bash scripts/composer2hf.sh
+```
+
+### Training
+**GPU**
+To train on GPUs, please refer to the guide of [fms-fsdp](training/fms_fsdp/README.md) for details.
+
+**TPU**
+To train on TPUs, please refer to guide of [MaxText](training/maxtext/README.md) for details.
+
+### Evaluation
+
 
 ## Reproduction Results
-**Minitron**
-**Winogrande**
+In this section, we show some of our results to verify that we can reproduce the results from the original pruning papers.  
+- For **Minitron**, the original papers did not report evaluation results after pruning and before retraining, so we attempt to reproduce the plots from [this paper](https://arxiv.org/abs/2408.11796).  
+- For **ShortGPT**, although evaluation results are provided, yet we noticed there are inconsistencies between results in the table (also see [openreview](https://openreview.net/forum?id=JMNht3SmcG)). Therefore, we choose to reproduce the block importance plot from the paper, which implies the correctness of our implementation.  
+- For all other methods, both official implementation and evaluation results are provided, so we simply provide comparison with the reported results in paper.
 
+**Minitron-Winogrande**
+Left: plot from the paper; Right: plot made by us.
 <table>
   <tr>
     <td style="text-align:center;">
       <img src="pruning/minitron/figs/minitron-winogrande.png" width="400"><br>
-      Baseline
+      Paper
     </td>
     <td style="text-align:center;">
       <img src="pruning/minitron/figs/minitron-winogrande-ours.png" width="400"><br>
@@ -44,13 +123,13 @@ For an overview of the pruning methods, see [here](pruning/README.md); for usage
 </table>
 
 
-**Wikitext**
+**Minitron-Wikitext**
 
 <table>
   <tr>
     <td style="text-align:center;">
       <img src="pruning/minitron/figs/minitron-wikitext.png" width="400"><br>
-      Baseline
+      Paper
     </td>
     <td style="text-align:center;">
       <img src="pruning/minitron/figs/minitron-wikitext-ours.png" width="400"><br>
@@ -65,7 +144,7 @@ For an overview of the pruning methods, see [here](pruning/README.md); for usage
   <tr>
     <td style="text-align:center;">
       <img src="pruning/minitron/figs/shortgpt-fig3.png" width="400"><br>
-      Baseline
+      Paper
     </td>
     <td style="text-align:center;">
       <img src="pruning/minitron/figs/shortgpt-fig3-ours.png" width="400"><br>
@@ -81,9 +160,9 @@ Llama-2-7b-hf:
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | unstructured | 0.5 | Paper | 75.0 | 53.4 | 52.5 | 68.2 | 72.8 | 39.9 | 31.2 |
 | unstructured | 0.5 | Ours  | 76.7 | 53.4 | 52.5 | 68.7 | 72.4 | 39.4 | 30.8 |
-| 4:8          | 0.5 | Paper | 72.7 | 53.8 | 46.5	| 66.6	| 66.7 | 34.1	| 25.8 |
+| 4:8          | 0.5 | Paper | 72.7 | 53.8 | 46.5	| 66.6 | 66.7 | 34.1 | 25.8 |
 | 4:8          | 0.5 | Ours  | 73.0 | 53.8 | 46.9 | 66.9 | 67.0 | 34.0 | 26.2 |
-| 2:4          | 0.5 | Paper | 67.7 | 53.0 | 40.9	| 62.4 |	61.78 | 31.2 | 24.2 |
+| 2:4          | 0.5 | Paper | 67.7 | 53.0 | 40.9	| 62.4 | 61.8 | 31.2 | 24.2 |
 | 2:4          | 0.5 | Ours  | 68.0 | 53.4 | 41.2 | 62.6 | 62.6 | 30.9 | 23.8 |
 
 **SparseGPT**
@@ -93,21 +172,21 @@ Llama-2-7b-hf:
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | unstructured | 0.5 | Paper | 75.0 | 54.2 | 52.4 | 69.9 | 73.3 | 39.9 | 29.2 |
 | unstructured | 0.5 | Ours  | 73.7 | 53.8 | 52.8 | 70.0 | 72.0 | 38.5 | 29.2 |
-| 4:8          | 0.5 | Paper | 72.7 | 55.2 | 48.2	| 68.1	| 69.2 | 35.8	| 27.4 |
+| 4:8          | 0.5 | Paper | 72.7 | 55.2 | 48.2	| 68.1 | 69.2 | 35.8 | 27.4 |
 | 4:8          | 0.5 | Ours  | 72.5 | 56.7 | 48.2 | 67.3 | 69.0 | 35.2 | 27.6 |
-| 2:4          | 0.5 | Paper | 70.5 | 58.8 |	43.3 | 66.7 |	64.1 | 30.0	| 23.2	|
-| 2:4          | 0.5 | Ours  | 70.3 | 58.5 | 43.3 | 64.7 | 64.0 | 31.6 | 24 |
+| 2:4          | 0.5 | Paper | 70.5 | 58.8 | 43.3 | 66.7 | 64.1 | 30.0 | 23.2	|
+| 2:4          | 0.5 | Ours  | 70.3 | 58.5 | 43.3 | 64.7 | 64.0 | 31.6 | 24.0 |
 
 **Magnitude**
 
 Llama-2-7b-hf:
 | Sparsity | Ratio | Source | BoolQ | RTE | Hellaswag | Winogrande | ARC-E | ARC-C | OBQA |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| unstructured | 0.5 | Paper | 63.0 | 57.0 |	49.1 | 63.3 | 64.1	| 34.6	| 26.8 |
+| unstructured | 0.5 | Paper | 63.0 | 57.0 | 49.1 | 63.3 | 64.1	| 34.6 | 26.8 |
 | unstructured | 0.5 | Ours  | 62.9 | 57.0 | 49.1 | 63.2 | 64.1 | 34.6 | 26.8 |
 | 4:8          | 0.5 | Paper | 63.0 | 52.4 | 50.1 | 62.4 | 64.7	| 35.9 | 26.0 | 
 | 4:8          | 0.5 | Ours  | 63.0 | 52.4 | 50.1 | 62.4 | 64.8 | 35.9 | 26.0 |
-| 2:4          | 0.5 | Paper | 56.2 | 51.4 |	42.3 |		60.9 | 59.2 | 27.3 | 21.8 |
+| 2:4          | 0.5 | Paper | 56.2 | 51.4 | 42.3 | 60.9 | 59.2 | 27.3 | 21.8 |
 | 2:4          | 0.5 | Ours  | 59.8 | 52.4 | 45.4 | 61.1 | 61.9 | 30.2 | 21.8 | 
 
 **Sheared Llama**
