@@ -1,7 +1,6 @@
 #!/bin/bash
 
 hf_model_path=meta-llama/Llama-3.1-8B
-hf_model_path=/n/fs/vision-mix/yx1168/model_ckpts/Llama-3.1-8B
 tasks=(
     c4
     wikitext

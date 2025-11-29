@@ -99,6 +99,17 @@ To train on GPUs, please refer to the guide of [fms-fsdp](training/fms_fsdp/READ
 To train on TPUs, please refer to guide of [MaxText](training/maxtext/README.md) for details.
 
 ### Evaluation
+**GPU**
+For evaluation on GPUS, you may run the following evaluation script on your HF checkpoint:
+```bash
+cd training/fms_fsdp
+bash scripts/install.sh
+
+cd ../../eval
+bash scripts/eval.sh
+```
+Note for [LLM-Pruner](pruning/LLM-Pruner) and [Wanda](pruning/wanda), they have specified a specific version of lm-eval to use, which is included in their respective directory, and the evaluation code is included in the pruning process.  
+For all other methods, you may eval with the script provided.
 
 
 ## Reproduction Results
