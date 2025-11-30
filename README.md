@@ -1,5 +1,12 @@
 # LLM Pruning Collection
 
+This repo is the codebase for our project "Rethinking the Value of Network Pruning for Large Language Models". It contains:
+- the implementations of various LLM pruning methods of different granularity.
+- pretraining and fine-tuning code for both GPU and TPU platforms.
+- evaluation scripts for assessing model performance.
+
+We also developed [JobMan](https://github.com/Zephyr271828/jobman), a TPU orchestration system that provides convenient interface for managing TPU jobs.
+
 The repo is organized as follows:
 
 ```bash
